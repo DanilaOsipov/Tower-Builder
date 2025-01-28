@@ -1,4 +1,5 @@
-﻿using Settings.Implemented;
+﻿using Settings;
+using Settings.Implemented;
 using UnityEngine;
 using Zenject;
 
@@ -12,8 +13,8 @@ namespace Installers
 
         public override void InstallBindings()
         {
-            Container.BindInstance(_cubes).AsSingle();
-            Container.BindInstance(_buildAreaSettings).AsSingle();
+            Container.Bind<ICubesSettings>().FromInstance(_cubes).AsSingle();
+            Container.Bind<IBuildAreaSettings>().FromInstance(_buildAreaSettings).AsSingle();
         }
     }
 }
